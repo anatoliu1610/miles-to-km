@@ -22,10 +22,8 @@ jobs:
         pip install -r requirements.txt
     
     - name: Deploy to Railway
-      uses: railwayapp/action@v1.0.4
+      uses: railwayapp/railway-action@v1
       with:
         railway-token: ${{ secrets.RAILWAY_TOKEN }}
-        service: miles-to-km
-        environment: production
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
