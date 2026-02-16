@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Miles to Kilometers Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background: #f5f5f5; }
+    .card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h1 { margin-top: 0; color: #333; }
+    input { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; margin-bottom: 12px; }
+    button { background: #2563eb; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    #result { margin-top: 16px; font-size: 18px; font-weight: 500; color: #1d4ed8; }
+    .footer { margin-top: 24px; color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Miles to Kilometers</h1>
+    <input type="number" id="miles" placeholder="Enter miles..." step="any">
+    <button onclick="convert()">Convert</button>
+    <div id="result"></div>
+    <div class="footer">
+      Simple converter • 1 mile = 1.60934 km
+    </div>
+  </div>
+  <script>
+    function convert() {
+      const miles = parseFloat(document.getElementById('miles').value);
+      const resultEl = document.getElementById('result');
+      if (isNaN(miles)) {
+        resultEl.textContent = 'Please enter a valid number';
+        return;
+      }
+      const km = miles * 1.60934;
+      resultEl.textContent = `${miles.toLocaleString()} miles = ${km.toLocaleString(undefined, {maximumFractionDigits: 4})} km`;
+    }
+    // Enter key triggers conversion
+    document.getElementById('miles').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') convert();
+    });
+  </script>
+</body>
+</html>
